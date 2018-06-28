@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<li class="task__item">
+    <a href="{% url 'edit' reminder.pk %}">
+        <h3 class="title
+            {% if reminder.is_complete %}complete
+            {% endif %}">{{ reminder.title }}
+        </h3>
+    </a>
 
-</body>
-</html>
+    <p class="description">{{ reminder.description }}</p>
+        {% if reminder.due_date %}
+            <p class="due">Due: {{ reminder.due_date }}</p>
+        {% endif %}
+
+    <form method="POST" action="{% url 'toggle' reminder_id=reminder.pk %}">
+        {% csrf_token %}
+            <button type="submit">
+            {% if reminder.is_complete %}
+                 <i class="fas fa-clipboard-check"></i>
+{#                <span class="glyphicon glyphicon-red">&times;</span>#}
+            {% else %}
+                <i class="fas fa-clipboard-list"></i>
+{#                <span class="glyphicon glyphicon-blue">&times;</span>#}
+            {% endif %}
+        </button>
+    </form>
+</li>

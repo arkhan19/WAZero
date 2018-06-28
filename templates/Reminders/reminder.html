@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Reminder</title>
-</head>
-<body>
-I am Reminder, Create me to meet me ;)
-</body>
-</html>
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Create Reminder{% endblock %}
+{% block content %}
+<div class="task card-wrapper">
+
+    {% if update %}
+        <form method="post" action="{% url 'delete' reminder.pk %}">
+            {% csrf_token %}
+            <button class="delete">
+                <span class="glyphicon glyphicon-remove">X</span>
+            </button>
+        </form>
+        <h1>Edit Reminder</h1>
+    {% else %}
+        <h1>Create Reminder</h1>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <label>{{ form.title.label }}</label>
+        {% render_field form.title required="true" class+="form-control" %}
+
+        <label>{{ form.description.label }}</label>
+        {% render_field form.description rows="4" class+="form-control" %}
+
+        <label>{{ form.due_date.label}}</label>
+        {% render_field form.due_date class+="form-control" %}
+
+        <button class="btn btn-success btn-center btn-fullwidth" type="submit">
+            {% if update %}
+                Save
+            {% else %}
+                Add
+            {% endif %}
+        </button>
+        <div class="errors">
+            {{ form.errors }}
+        </div>
+    </form>
+</div>
+{% endblock %}

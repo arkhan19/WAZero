@@ -16,21 +16,28 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path
-from .views import home, register
-from reminder.views import reminder
+from .views import Home, register, index
+from django.contrib.auth.decorators import login_required
+from reminder import views as reminder_views
 
 urlpatterns = [
-    path('', home.as_view(), name='home'),
-
-    #Authorisation
+    # Basic Home Path
+    path('', Home.as_view(), name='home'),
+    path('index/', index, name='index'),
+    # Authorisation
     path('login/', auth_views.login, name='login'),
-    path('logout/', auth_views.logout, name='logout'),
+    path('logout/', Home.logout_view, name='logout'),
     path('register/', register, name='register'),
 
-    #Reminders
-    path('reminder/', reminder, name='reminder'),
-
-    #Admin
+    # Reminders
+    # path('reminder/', reminder, name='reminder'),
+    # path('reminder/', login_required(include('reminder.urls')), name = 'reminder'),
+    path('reminders/', login_required(reminder_views.ReminderListView.as_view(), login_url='login'), name='reminder'),
+    path('reminder/', login_required(reminder_views.NewReminderView.as_view()), name='add'),
+    path('reminder/<int:reminder_id>/', login_required(reminder_views.ReminderView.as_view()), name='edit'),
+    path('delete/<int:reminder_id>/', login_required(reminder_views.DeleteReminderView.as_view()), name='delete'),
+    path('toggle/<int:reminder_id>/', login_required(reminder_views.toggle_complete_view), name='toggle'),
+    # Admin
     path('admin/', admin.site.urls),
 
 ]

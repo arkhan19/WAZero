@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}Reminders{% endblock %}
+
+{% block content %}
+
+<div class="task__list card-wrapper raised">
+    <h1>To Do</h1>
+    {% if reminder %}
+        <ul>
+            {% for reminder in reminder %}
+                {% include 'Reminders/reminder_item.html' with reminder=reminder %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You currently have no Reminders.</p>
+    {% endif %}
+
+    <a class="task__add levitate" href="{% url 'add' %}">
+        <span>+</span>
+    </a>
+</div>
+
+
+{% endblock %}

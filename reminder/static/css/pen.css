@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+body {
+  align-items: center;
+  display: flex;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 2em;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+  margin: 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+}
+.shadow {
+  filter: url('#gooeyness2');
+  opacity: .2;
+  transform: translateY(3px);
+}
+.paths {
+  filter: url('#gooeyness1');
+}
+.button {
+  cursor: pointer;
+  fill:#005c94;
+  -webkit-tap-highlight-color: transparent;
+  transition: fill 100ms;
+}
+.button:active {
+  fill:#006ca9;
+}
+.icon-big {
+  bottom: 104px;
+  left: 100px;
+  pointer-events: none;
+  position: absolute;
+  width: 100px;
+}
+.path-cup {
+  transform-origin: 50%;
+}
+.icon {
+  height: 50px;
+  pointer-events: none;
+  position: absolute;
+  width: 50px;
+}
+.icon-coffee {
+  bottom: 82px;
+  left: 33px;
+}
+.icon-espresso {
+  bottom: 81px;
+  left: 127px;
+}
+.icon-latte {
+  bottom: 83px;
+  left: 220px;
+}

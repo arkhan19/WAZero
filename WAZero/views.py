@@ -1,11 +1,10 @@
 from django.urls import reverse
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import RedirectView
 
-
-class home(RedirectView):
+class Home(RedirectView):
     #return render(request, template_name='registration/signin.html')
     permanent = False
 
@@ -15,6 +14,12 @@ class home(RedirectView):
         else:
             return reverse('login')
 
+    def logout_view(request):
+        logout(request)
+        return redirect('login')
+
+def index (request):
+    return render(request, 'index.html')
 
 def register(request):
     """

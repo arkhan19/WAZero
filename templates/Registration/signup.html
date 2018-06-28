@@ -1,13 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-</head>
-<body>
-    <div style="text-align: center;">
-        <h1>Welcome to Register, Shall we Begin Sir?</h1>
-        Register Here!
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+    <div class="card-wrapper" style="text-align: center;">
+        <h1>Sign Up</h1>
+        <form method = "post">
+            <div class="form-group">
+                {% csrf_token %}
+                    {% for field in form %}
+                        <label>{{ field.label }}</label>
+                        {% render_field field class+="form-control" %}
+{#                        A widget-tweaks template tag#}
+                    {% endfor %}
+            </div>
+            <button class="btn btn-success btn-center btn-fullwidth" type="submit">Register</button>
+        <br>
+            <div class="errors">
+                {{ form.errors }}
+            </div>
+        </form>
     </div>
-</body>
-</html>
+
+{% endblock %}
