@@ -1,0 +1,81 @@
+.reminder__list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.reminder__item {
+    border-bottom: 1px solid whitesmoke;
+    float: left;
+    width: 100%;
+    position: relative;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    padding-right: 2.5em;
+}
+
+.reminder__list ul li:last-of-type {
+    border-bottom: 0;
+}
+
+.reminder__item .title {
+    font-weight: bold;
+    margin: 5px 0 0;
+}
+
+.reminder__item .title.complete {
+    text-decoration: line-through;
+}
+
+.reminder__item .description,
+.reminder__item .due {
+    font-weight: normal;
+    opacity: 0.8;
+    padding-top: 5px;
+}
+
+.reminder__item .due {
+    font-size: 0.8em;
+}
+
+.reminder__item button[type='submit'] {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.reminder__item .glyphicon {
+    font-size: 2em;
+}
+
+.reminder__add {
+    border-radius: 1000px;
+    background: #a87e00;
+    position: absolute;
+    cursor: pointer;
+    bottom: -0.8em;
+    left: 50%;
+    font-size: 2em;
+    padding: 3px 15px;
+    color: whitesmoke;
+    font-weight: bold;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+}
+
+.reminder__add:hover {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.reminder__add span {
+    position: relative;
+    top: -2px;
+}
+
+.reminder__delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: whitesmoke;
+}
