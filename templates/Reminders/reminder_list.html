@@ -6,19 +6,20 @@
 
 <div class="reminder__list card-wrapper raised">
     <h1>To Do</h1>
-    {% if reminder %}
-        <ul>
-            {% for reminder in reminder %}
-                {% include 'Reminders/reminder_item.html' with reminder=reminder %}
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>You currently have no Reminders.</p>
-    {% endif %}
+        {% if reminder %}
+            <ul>
+                {% for reminder in reminder %}
+                    {% include 'Reminders/reminder_item.html' with reminder=reminder %}
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You currently have no Reminders.</p>
+        {% endif %}
 
-    <a class="reminder__add levitate" href="{% url 'add' %}">
-        <span>+</span>
+<a class="reminder__add levitate" href="{% url 'add' %}">
+        <i class="fab fa-gripfire"></i>
     </a>
+
 </div>
 
 

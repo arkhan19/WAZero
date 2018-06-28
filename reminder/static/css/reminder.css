@@ -50,7 +50,7 @@
 
 .reminder__add {
     border-radius: 1000px;
-    background: #a87e00;
+    background: rgba(154, 122, 3, 0.89);
     position: absolute;
     cursor: pointer;
     bottom: -0.8em;
