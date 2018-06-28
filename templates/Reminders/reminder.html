@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 {% block title %}Create Reminder{% endblock %}
 {% block content %}
-<div class="task card-wrapper">
+<div class="reminder card-wrapper">
 
     {% if update %}
         <form method="post" action="{% url 'delete' reminder.pk %}">

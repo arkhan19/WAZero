@@ -1,5 +1,5 @@
 body {
-    background: #a23a00;
+    background: whitesmoke;
     overflow-x: hidden;
 }
 
@@ -23,7 +23,7 @@ a {
 }
 
 .floating-button:hover {
-    color: white;
+    color: whitesmoke;
     text-decoration: none;
 }
 
@@ -92,14 +92,6 @@ a {
 
 .btn-fullwidth {
     width: 100%;
-}
-
-.glyphicon-blue {
-    color: #00a0ea;
-}
-
-.glyphicon-red {
-    color: #F57173;
 }
 
 .errors > .errorlist {

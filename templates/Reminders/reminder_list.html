@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="task__list card-wrapper raised">
+<div class="reminder__list card-wrapper raised">
     <h1>To Do</h1>
     {% if reminder %}
         <ul>
@@ -16,7 +16,7 @@
         <p>You currently have no Reminders.</p>
     {% endif %}
 
-    <a class="task__add levitate" href="{% url 'add' %}">
+    <a class="reminder__add levitate" href="{% url 'add' %}">
         <span>+</span>
     </a>
 </div>
