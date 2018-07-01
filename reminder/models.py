@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+# from __future__ import unicode_literals
 from django.utils import timezone
 from django.db import models
 from django.conf import settings
@@ -31,21 +31,24 @@ class Reminder(models.Model):
     def due_soon(self):
         """
         Checks if a Reminder is due soon.
-        :return: True if Reminder is due within one day. Otherwise, False.
+        :return: True if Reminder is due within two day. Otherwise, False.
         """
+        min_due = timezone.now() + timezone.timedelta(days=2)
         return bool(
-            self.complete_time < (timezone.now() - timezone.timedelta(days=2)))
+            self.due_date and self.due_date < min_due)
 
-    def mark_complete(self):
+    def mark_complete(self, commit=True):
         """
         Marks a Reminder as complete by storing the current UTC time in complete_time
         """
         self.complete_time = timezone.now()
-        self.save()
+        if commit:
+            self.save()
 
-    def mark_incomplete(self):
+    def mark_incomplete(self, commit=True):
         """
         Marks a Reminder as incomplete by storing None in complete_time
         """
         self.complete_time = None
-        self.save()
+        if commit:
+            self.save()
