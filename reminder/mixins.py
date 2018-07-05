@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
 from .models import Reminder
+from django.urls import reverse
 
 
 class SuccessReminderListMixin(object):
@@ -10,7 +11,6 @@ class SuccessReminderListMixin(object):
     name can be used in success_url attribute for most classes.
     """
     def get_success_url(self):
-        from django.urls import reverse
         return reverse('reminder')
 
 

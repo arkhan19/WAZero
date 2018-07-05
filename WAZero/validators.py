@@ -20,4 +20,4 @@ class DisallowedWordsPasswordValidator(object):
             ))
 
     def get_help_text(self):
-        return ""
+        return " "
